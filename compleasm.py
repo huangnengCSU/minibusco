@@ -88,7 +88,8 @@ class Downloader:
         if download_placement:
             if not os.path.exists(self.placement_dir):
                 os.mkdir(self.placement_dir)
-            self.download_placement()  # download placement files
+            if not os.path.exists(self.placement_dir + ".done"):
+                self.download_placement()  # download placement files
 
         if download_lineage:
             for lineage in self.default_lineage:
